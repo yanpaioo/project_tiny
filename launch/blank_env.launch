@@ -1,0 +1,18 @@
+<launch>
+	<node pkg="stage_ros" type="stageros" name="stageros"
+		args="/home/yan/catkin_ws/src/project_tiny/stage/blank.world"
+        respawn="false">
+        <remap from="/robot_0/base_pose_ground_truth" to="/red_ugv/base_pose_ground_truth"/>
+        <remap from="/robot_0/base_scan" to="/red_ugv/base_scan"/>
+        <remap from="/robot_0/cmd_vel" to="/red_ugv/cmd_vel"/>
+        <remap from="/robot_0/odom" to="/red_ugv/odom"/>
+
+        <remap from="/robot_1/base_pose_ground_truth" to="/blue_ugv/base_pose_ground_truth"/>
+        <remap from="/robot_1/base_scan" to="/blue_ugv/base_scan"/>
+        <remap from="/robot_1/cmd_vel" to="/blue_ugv/cmd_vel"/>
+        <remap from="/robot_1/odom" to="/blue_ugv/odom"/>
+    </node>
+
+
+</launch>
+

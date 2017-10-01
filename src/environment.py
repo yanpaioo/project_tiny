@@ -116,7 +116,7 @@ class environment:
 			cmdvel.angular.z = action[2]/abs(action[2])*self.max_angular_speed
 
 		self.Pub_red_ugv_cmdvel.publish(cmdvel)
-		
+
 
 	def blue_cmdvel(self, action):
 		cmdvel = Twist()
@@ -161,12 +161,17 @@ class environment:
 		pass
 	
 
-myenv = environment()
 
+if __name__ == '__main__':
+	try:
+		myenv = environment()
 
-rate = rospy.Rate(frequency)
-while(1):
-	observation, reward, done = myenv.step(0, 0)
-	print(observation, reward, done)
-	rate.sleep()
+		rate = rospy.Rate(frequency)
+		while(1):
+			observation, reward, done = myenv.step(0, 0)
+			print(observation, reward, done)
+			rate.sleep()
+
+	except rospy.ROSInterruptException:
+		print("\n----------Exiting environment----------")
 	

@@ -8,10 +8,10 @@ define block model
 define topurg ranger
 (
    sensor( 			
-    range [ 0.0  5.0 ]
+    range [ 0.0  10.0 ]
     fov 180
     #fov 270.25
-    samples 512
+    samples 128
   )
 
   # generic model properties
@@ -24,11 +24,12 @@ define red_robot position
   name "red_robot"
   #size [0.415 0.392 0.25]
   #size [0.35 0.35 0.35]
-  size [0.600 0.600 0.600]
+  size [1.000 1.000 1.000]
   origin [0.000 0.000 0.000 0.000]
-  gui_nose 1
+  gui_nose 0
   drive "omni"
-  topurg(pose [ 0.050 0.000 0.000 0.000 ])
+  topurg(pose [ 0.050 0.000 -0.500 0.000 ])
+
 )
 
 define blue_robot position
@@ -36,11 +37,12 @@ define blue_robot position
   name "blue_robot"
   #size [0.415 0.392 0.25]
   #size [0.35 0.35 0.35]
-  size [0.600 0.600 0.600]
+  size [1.000 1.000 1.000]
   origin [0.00 0.000 0.000 0.000]
-  gui_nose 1
+  gui_nose 0
   drive "omni"
-  topurg(pose [ 0.050 0.000 0.000 0.000 ])
+  topurg(pose [ 0.050 0.000 -0.500 0.000 ])
+
 )
 
 define floorplan model
@@ -54,7 +56,7 @@ define floorplan model
   gui_nose 0
   gui_grid 0
 
-  gui_outline 0
+  gui_outline 1
   gripper_return 0
   fiducial_return 0
   laser_return 1
@@ -68,7 +70,7 @@ interval_sim 100  # simulation timestep in milliseconds
 
 window
 ( 
-  size [ 615 425 ] 
+  size [ 500 500 ] 
 
   #rotate [ 0.000 -1.560 ]
   
@@ -80,7 +82,7 @@ floorplan
 ( 
   name "rrc"
   bitmap "blank.pgm"
-  size [15.000 20.000 0.800]
+  size [40.000 40.000 0.800]
   pose [0.000 0.000 0.000 0.000 ]
 )
 
@@ -89,4 +91,3 @@ floorplan
 red_robot( pose [ 0.0 0.0 0.0 0.0 ] name "red_robot" color "red")
 blue_robot( pose [ 2.0 2.0 0.0 0.0 ] name "blue_robot" color "blue")
 #maven( pose [ -1.277 -6.266 0 0.000 ] name "blue" color "blue")
-#block( pose [ -1.924 5.020 0 180.000 ] color "red")
